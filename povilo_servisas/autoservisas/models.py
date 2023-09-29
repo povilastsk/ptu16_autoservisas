@@ -58,13 +58,16 @@ class ServiceOrder(models.Model):
         on_delete=models.CASCADE
     )
     date = models.DateField(_("date"), auto_now=False, auto_now_add=True)
+    status = models.PositiveSmallIntegerField(
+        _("status"), choices=SERVICEORDER_STATUS, default=0
+    )
 
     class Meta:
         verbose_name = _("service order")
         verbose_name_plural = _("service orders")
 
     def __str__(self):
-        return f"Date: {self.date} - {self.car}"
+        return f"Date: {self.date} - {self.car} - {self.status}"
 
     def get_absolute_url(self):
         return reverse("serviceorder_detail", kwargs={"pk": self.pk})
