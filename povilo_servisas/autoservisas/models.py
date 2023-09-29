@@ -39,7 +39,7 @@ class Car(models.Model):
         verbose_name_plural = _("cars")
 
     def __str__(self):
-        return f"{self.customer}: {self.car_model} - Plate No.{self.plate}"
+        return f"{self.customer}: {self.car_model} - Plate: {self.plate}"
 
     def get_absolute_url(self):
         return reverse("car_detail", kwargs={"pk": self.pk})
