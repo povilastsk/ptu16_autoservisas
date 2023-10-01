@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _ 
 from django.urls import reverse
-import uuid
-# Create your models here.
+
 
 class CarModel(models.Model):
 
@@ -39,7 +38,7 @@ class Car(models.Model):
         verbose_name_plural = _("cars")
 
     def __str__(self):
-        return f"{self.customer}: {self.car_model} - Plate: {self.plate}"
+        return f"{self.customer}: {self.car_model} - {self.plate}"
 
     def get_absolute_url(self):
         return reverse("car_detail", kwargs={"pk": self.pk})
@@ -67,7 +66,7 @@ class ServiceOrder(models.Model):
         verbose_name_plural = _("service orders")
 
     def __str__(self):
-        return f"Date: {self.date} - {self.car} - {self.status}"
+        return f"{self.date} - {self.car} - {self.status}"
 
     def get_absolute_url(self):
         return reverse("serviceorder_detail", kwargs={"pk": self.pk})
