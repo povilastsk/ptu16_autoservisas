@@ -8,10 +8,10 @@
         <li>Brands: {{ num_makes }}</li>
         <li>Orders currently: {{ num_orders }}</li>
     </ul>
-    <h2>Parts and Services</h2>
+    <h2>Brands</h2>
     <ul>
-        {% for partservice in parts_services %}
-            <li> {{ partservice }}
+        {% for brand in brands %}
+            <li> {{ brand }}
         {% endfor %}
     </ul>
 {% endblock content%}
