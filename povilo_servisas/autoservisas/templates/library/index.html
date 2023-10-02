@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTU16 Povilo Servisas</title>
+</head>
+<body>
+    <h1>Welcome to Povilo Servisas PTU16</h1>
+    <p>Current Database Status:</p>
+    <ul>
+        <li>Cars: {{ num_cars }}</li>
+        <li>Brands: {{ num_makes }}</li>
+        <li>Orders currently: {{ num_orders }}</li>
+    </ul>
+    <h2>Parts and Services</h2>
+    <ul>
+        {% for partservice in parts_services %}
+            <li> {{ partservice }}
+        {% endfor %}
+    </ul>
+</body>
+</html>
