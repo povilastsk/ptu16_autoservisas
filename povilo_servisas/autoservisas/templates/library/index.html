@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTU16 Povilo Servisas</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Welcome to {{block.super}}{% endblock title %}
+{% block content %}
     <h1>Welcome to Povilo Servisas PTU16</h1>
     <p>Current Database Status:</p>
     <ul>
@@ -19,5 +14,4 @@
             <li> {{ partservice }}
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock content%}

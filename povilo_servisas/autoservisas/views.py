@@ -10,6 +10,6 @@ def index(request):
         "num_cars": models.Car.objects.count(),
         "num_makes": models.CarModel.objects.values('make').distinct().count(),
         "num_orders": models.OrderLine.objects.count(),
-        "parts_services":models.PartService.objects.all(),
+        "parts_services": models.PartService.objects.all(),
     }
     return render(request, "library/index.html", context)
