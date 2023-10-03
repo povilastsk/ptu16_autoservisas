@@ -6,20 +6,28 @@ from typing import Any
 
 
 def index(request):
-    brands = models.CarModel.objects.values_list("make", flat=True).distinct()
     context = {
         "num_cars": models.Car.objects.count(),
         "num_makes": models.CarModel.objects.values("make").distinct().count(),
         "num_orders": models.OrderLine.objects.count(),
-        "brands": brands,
+        "parts_services": models.PartService.objects.all(),
     }
     return render(request, "library/index.html", context)
 
+def parts_and_services(request):
+    parts_and_services_list = models.PartService.objects.all().order_by("name")
+    return render(
+        request, 
+        'parts_and_services.html', 
+        {'partsandervices': parts_and_services_list}
+    )
 
 def brands(request):
     brands = models.CarModel.objects.all()
     unique_brands = sorted(set(model.make for model in brands))
-    return render(request, "library/brand_list.html", {"brand_list": unique_brands})
+    return render(
+        request, 
+        "library/brand_list.html", {"brand_list": unique_brands})
 
 def cars(request):
     return render(
