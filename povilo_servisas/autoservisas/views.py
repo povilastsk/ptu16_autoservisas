@@ -12,3 +12,9 @@ def index(request):
         "brands": brands,
     }
     return render(request, "library/index.html", context)
+
+
+def brands(request):
+    car_models = models.CarModel.objects.all()
+    unique_brands = sorted(set(model.make for model in car_models))
+    return render(request, "library/brand_list.html", {"brand_list": unique_brands})
