@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from . import models
+from django.views import generic
+from typing import Any
 
 
 
@@ -15,6 +17,20 @@ def index(request):
 
 
 def brands(request):
-    car_models = models.CarModel.objects.all()
-    unique_brands = sorted(set(model.make for model in car_models))
+    brands = models.CarModel.objects.all()
+    unique_brands = sorted(set(model.make for model in brands))
     return render(request, "library/brand_list.html", {"brand_list": unique_brands})
+
+def cars(request):
+    return render(
+        request,
+        "library/car_list.html",
+        {"car_list": models.Car.objects.all()}
+        )
+
+def orders(request):
+    return render(
+        request,
+        "library/order_list.html",
+        {"order_list": models.OrderLine.objects.all()}
+        )

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Cars in {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>Vehicle Database</h1>
+{% if car_list %}
+    <ul class="cool-list">
+        {% for car in car_list %}
+            <li>{{ car }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No cars found</p>
+{% endif %}
+{% endblock content %}

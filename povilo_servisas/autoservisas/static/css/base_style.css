@@ -48,3 +48,19 @@ h1, h2 {
 p {
     padding: 0 1rem;
 }
+ul.cool-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: none;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid #b5651d55;
+    background-color: #522a0755;
+    box-shadow: 1px 3px 5px #00000033;
+}
+ul.cool-list li{
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #b5651d55;
+}

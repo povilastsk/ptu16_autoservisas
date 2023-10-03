@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Cars in {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>Order list</h1>
+{% if order_list %}
+    <ul class="cool-list">
+        {% for order in order_list %}
+            <li>{{ order }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders found</p>
+{% endif %}
+{% endblock content %}
