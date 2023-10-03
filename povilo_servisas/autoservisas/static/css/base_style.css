@@ -5,6 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-weight: bold;
 }
 main {
     flex-grow: 1;
@@ -63,4 +64,38 @@ ul.cool-list li{
     margin: 0.25rem 0;
     padding: 0.25rem 0.5rem;
     border-bottom: 1px solid #b5651d55;
+}
+ul.brand-list a {
+    display: inline-block;
+    padding: 0.25rem;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+ul.brand-list a:hover {
+    font-weight: bold;
+    color: red;
+}
+ul.car-model-list {
+    display: inline-block;
+    color: black;
+    padding: 1rem;
+    margin: 1rem;
+    font-weight: bold;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: none;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+ul.order-list {
+    display: flex;
+    color: black;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: none;
+    padding: 0 1rem;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
 }

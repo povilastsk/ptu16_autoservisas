@@ -23,11 +23,20 @@ def parts_and_services(request):
     )
 
 def brands(request):
-    brands = models.CarModel.objects.all()
-    unique_brands = sorted(set(model.make for model in brands))
+    unique_brands = models.CarModel.objects.values("make").distinct()
     return render(
-        request, 
-        "library/brand_list.html", {"brand_list": unique_brands})
+        request,
+        "library/brand_list.html",
+        {"brand_list": unique_brands},
+    )
+
+def brand_detail(request, brand):
+    car_models = models.CarModel.objects.filter(make=brand)
+    return render(
+        request,
+        "library/brand_detail.html",
+        {"brand": brand, "car_models": car_models},
+    )
 
 def cars(request):
     return render(

@@ -1,14 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Cars in {{ block.super }}{% endblock title %}
+{% block title %}Brands in {{ block.super }}{% endblock title %}
 {% block content %}
-<h1>Brands</h1>
+<h1>Car Brands</h1>
 {% if brand_list %}
-    <ul class="cool-list">
+    <ul class="brand-list">
         {% for brand in brand_list %}
-            <li>{{ brand }}</li>
+            <li><a href="{% url 'brand_detail' brand.make %}">{{ brand.make }}</a></li>
         {% endfor %}
     </ul>
-{% else %}
-    <p>No brands found</p>
 {% endif %}
 {% endblock content %}
