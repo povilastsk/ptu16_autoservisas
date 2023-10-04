@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from . import models
+from .forms import BrandSearchForm
 from django.views import generic
 from typing import Any
 
@@ -24,19 +25,25 @@ def parts_and_services(request):
     )
 
 def brands(request):
-    car_models = models.CarModel.objects.all()
+    search_query = request.GET.get('search_query')
+    if request.GET.get('reset_search'):
+        return redirect('brands')
+    if search_query:
+        car_models = models.CarModel.objects.filter(make__icontains=search_query)
+    else:
+        car_models = models.CarModel.objects.all()
     unique_brands = sorted(set(model.make for model in car_models))
-
     page_number = request.GET.get('page')
     items_per_page = 3
-
     paginator = Paginator(unique_brands, items_per_page)
     page_obj = paginator.get_page(page_number)
+
+    search_form = BrandSearchForm(initial={'search_query': search_query})
 
     return render(
         request,
         "library/brand_list.html",
-        {"brand_list": page_obj},
+        {"brand_list": page_obj, "search_form": search_form},
     )
 
 def brand_detail(request, brand):

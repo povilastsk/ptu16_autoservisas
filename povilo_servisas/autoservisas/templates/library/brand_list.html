@@ -2,6 +2,14 @@
 {% block title %}Brands in {{ block.super }}{% endblock title %}
 {% block content %}
 <h1>Car Brands</h1>
+
+<!-- Search Form -->
+<form method="get" action="">
+    {{ search_form.as_p }}
+    <button type="submit" class="search-button">Search</button>
+    <a href="?reset_search" class="reset-button">Reset</a>
+</form>
+
 {% if brand_list %}
     <ul class="brand-list">
         {% for brand in brand_list %}
@@ -10,11 +18,11 @@
     </ul>
     <div class="pager">
         {% if brand_list.has_previous %}
-            <a href="?page={{ brand_list.previous_page_number }}">Previous</a>
+            <a href="?page={{ brand_list.previous_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">Previous</a>
         {% endif %}
         <span class="current">{{ brand_list.number }} / {{ brand_list.paginator.num_pages }}</span>
         {% if brand_list.has_next %}
-            <a href="?page={{ brand_list.next_page_number }}">Next</a>
+            <a href="?page={{ brand_list.next_page_number }}{% if search_query %}&search_query={{ search_query }}{% endif %}">Next</a>
         {% endif %}
     </div>
 {% endif %}

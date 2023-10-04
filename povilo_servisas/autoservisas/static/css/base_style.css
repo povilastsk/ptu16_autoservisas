@@ -48,6 +48,26 @@ h1, h2 {
 }
 p {
     padding: 0 1rem;
+
+}
+.search-button,
+.reset-button {
+    background-color: #241a16;
+    color: #FFFDD0;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+    font-family: cursive;
+    font-weight: bold;
+}
+.search-button:hover,
+.reset-button:hover {
+    background-color: #9A7B4F;
+}
+.reset-button {
+    text-decoration: none;
 }
 ul.cool-list {
     display: flex;
