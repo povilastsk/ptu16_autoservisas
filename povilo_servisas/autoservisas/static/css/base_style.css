@@ -1,5 +1,5 @@
 body{ 
-    font-family: sans-serif; 
+    font-family: cursive; 
     background-color: #FFFDD0; 
     padding: 0; margin: 0; 
     display: flex;
@@ -98,4 +98,67 @@ ul.order-list {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
+}
+div.pager a {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    color: white;
+    text-decoration: none;
+    background-color: #241a16;
+    border: 1px solid #241a16;
+    border-radius: 4px;
+    margin: 0.25rem;
+    font-weight: bold;
+}
+div.pager .current {
+    color: #FFFDD0;
+    background-color: #241a16;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #b5651d55;
+    border-radius: 4px;
+    margin: 0.25rem;
+    font-weight: bold;
+}
+table.car-model-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #b5651d55;
+    background-color: #522a0755;
+    box-shadow: 1px 3px 5px #00000033;
+}
+table.car-model-table th {
+    background-color: #9A7B4F;
+    color: #FFFDD0;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #b5651d55;
+}
+table.car-model-table tr {
+    border-bottom: 1px solid #b5651d55;
+}
+table.car-model-table td {
+    padding: 1rem;
+}
+table.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border: 1px solid #b5651d55;
+    background-color: #522a0755;
+    box-shadow: 1px 3px 5px #00000033;
+}
+table.order-table th {
+    background-color: #9A7B4F;
+    color: #FFFDD0;
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 2px solid #b5651d55;
+}
+table.order-table tr {
+    border-bottom: 1px solid #b5651d55;
+}
+table.order-table td {
+    padding: 0.5rem;
 }

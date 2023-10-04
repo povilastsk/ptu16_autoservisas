@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.core.paginator import Paginator
 from . import models
 from django.views import generic
 from typing import Any
@@ -23,11 +24,19 @@ def parts_and_services(request):
     )
 
 def brands(request):
-    unique_brands = models.CarModel.objects.values("make").distinct()
+    car_models = models.CarModel.objects.all()
+    unique_brands = sorted(set(model.make for model in car_models))
+
+    page_number = request.GET.get('page')
+    items_per_page = 3
+
+    paginator = Paginator(unique_brands, items_per_page)
+    page_obj = paginator.get_page(page_number)
+
     return render(
         request,
         "library/brand_list.html",
-        {"brand_list": unique_brands},
+        {"brand_list": page_obj},
     )
 
 def brand_detail(request, brand):

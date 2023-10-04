@@ -5,8 +5,17 @@
 {% if brand_list %}
     <ul class="brand-list">
         {% for brand in brand_list %}
-            <li><a href="{% url 'brand_detail' brand.make %}">{{ brand.make }}</a></li>
+            <li><a href="{% url 'brand_detail' brand %}">{{ brand }}</a></li>
         {% endfor %}
     </ul>
+    <div class="pager">
+        {% if brand_list.has_previous %}
+            <a href="?page={{ brand_list.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span class="current">{{ brand_list.number }} / {{ brand_list.paginator.num_pages }}</span>
+        {% if brand_list.has_next %}
+            <a href="?page={{ brand_list.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
 {% endif %}
 {% endblock content %}

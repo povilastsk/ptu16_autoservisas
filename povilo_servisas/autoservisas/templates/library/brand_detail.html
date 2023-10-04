@@ -1,15 +1,25 @@
 {% extends "base.html" %}
-{% block title %}{{ brand }} Models in {{ block.super }}{% endblock title %}
+{% block title %}Car Models for {{ brand }}{% endblock title %}
 {% block content %}
-<h1>{{ brand }} Models</h1>
-<ul class="car-model-list">
-    {% for car_model in car_models %}
-        <li>
-            <a href="{% url 'brand_detail' car_model.pk %}"></a>
-            <div class="info">{{ car_model.model }} - {{ car_model.year }}</div>
-        </li>
-    {% empty %}
-        <p>No car models found for {{ brand }}</p>
-    {% endfor %}
-</ul>
+<h1>Car Models for {{ brand }}</h1>
+{% if car_models %}
+    <table class="car-model-table">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car_model in car_models %}
+                <tr>
+                    <td>{{ car_model.model }}</td>
+                    <td>{{ car_model.year }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No car models found for {{ brand }}.</p>
+{% endif %}
 {% endblock content %}
