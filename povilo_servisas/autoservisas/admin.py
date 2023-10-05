@@ -9,9 +9,9 @@ class CarModelAdmin(admin.ModelAdmin):
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ("customer", "car_model", "plate", "vin", "color")
+    list_display = ("customer", "owner", "car_model", "plate", "vin", "color")
     list_filter = ("customer", "car_model__make", "color")
-    search_fields = ("customer", "car_model__make", "car_model__model", "plate", "vin", "color")
+    search_fields = ("customer", "owner", "car_model__make", "car_model__model", "plate", "vin", "owner__last_name", "owner__username")
 
 
 class ServiceOrderAdmin(admin.ModelAdmin):

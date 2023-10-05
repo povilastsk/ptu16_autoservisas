@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}My Cars from {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>My Cars</h1>
+{% if car_list %}
+    <table class="car-model-table">
+        <tr>
+            <th>Customer</th>
+            <th>Owner</th>
+            <th>Car model</th>
+            <th>Plate</th>
+            <th>Vin</th>
+        </tr>
+    {% for car in car_list %}
+        <tr>
+            <td><a href="{% url "user_cars" %}">{{ car.customer }}</a></td>
+            <td>{{ car.owner }}</td>
+            <td>{{ car.car_model }}</td>
+            <td>{{ car.plate }}</td>
+            <td>{{ car.vin }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No cars found.</p>
+{% endif %}
+{% endblock content %}

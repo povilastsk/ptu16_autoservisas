@@ -1,12 +1,23 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest
+from django.db.models.query import QuerySet, Q
 from . import models
 from .forms import BrandSearchForm
 from django.views import generic
 from typing import Any
 
+class UserCarListView(LoginRequiredMixin, generic.ListView):
+    model = models.Car
+    template_name = "library/user_car_list.html"
+    paginate_by = 5
 
+    def get_queryset(self) -> QuerySet[Any]:
+        queryset = super().get_queryset()
+        queryset = queryset.filter(owner=self.request.user)
+        return queryset
+    
 
 def index(request:HttpRequest):
     num_visits = request.session.get("num_visits", 1)

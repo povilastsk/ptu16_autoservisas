@@ -1,6 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _ 
 from django.urls import reverse
+
+
+User = get_user_model()
 
 
 class CarModel(models.Model):
@@ -42,6 +46,13 @@ class Car(models.Model):
 
     def get_absolute_url(self):
         return reverse("car_detail", kwargs={"pk": self.pk})
+    
+    owner = models.ForeignKey(
+        User, 
+        verbose_name=_("owner"), 
+        on_delete=models.CASCADE,
+        null=True, blank=True,
+    )
 
 SERVICEORDER_STATUS = (
     (0, _("pending")),
