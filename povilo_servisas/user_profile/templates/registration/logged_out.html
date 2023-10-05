@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Logged out from {{ block.super }}{% endblock title %}
 {% block content %}
 <h1>Bye bye</h1>
-<p>You are now logged out from PTU16 library. 
+<p>You are now logged out. 
     You are welcome to <a href="{% url "login" %}">log in</a> back any time.</p>
 {% endblock content %}
