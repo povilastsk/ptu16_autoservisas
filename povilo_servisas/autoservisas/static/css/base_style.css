@@ -70,7 +70,7 @@ p {
 .reset-button {
     text-decoration: none;
 }
-ul.cool-list {
+ul.cool-list, ul.errorlist {
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -81,10 +81,16 @@ ul.cool-list {
     background-color: #522a0755;
     box-shadow: 1px 3px 5px #00000033;
 }
-ul.cool-list li{
+ul.cool-list li, ul.errorlist li {
     margin: 0.25rem 0;
     padding: 0.25rem 0.5rem;
     border-bottom: 1px solid #b5651d55;
+}   
+ul.errorlist {
+    background-color: #e0c0c0;
+}
+ul li.spacer {
+    flex-grow: 1
 }
 ul.brand-list a {
     display: inline-block;
