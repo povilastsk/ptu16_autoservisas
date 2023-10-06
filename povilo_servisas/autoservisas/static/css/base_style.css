@@ -116,17 +116,6 @@ ul.car-model-list {
     padding: 0.5rem;
     margin: 1rem;
 }
-ul.order-list {
-    display: flex;
-    color: black;
-    flex-direction: column;
-    list-style-type: none;
-    padding-inline-start: none;
-    padding: 0 1rem;
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
-}
 div.pager a {
     display: inline-block;
     padding: 0.25rem 0.5rem;

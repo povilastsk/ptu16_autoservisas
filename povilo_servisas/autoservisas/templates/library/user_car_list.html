@@ -5,19 +5,17 @@
 {% if car_list %}
     <table class="car-model-table">
         <tr>
-            <th>Customer</th>
-            <th>Owner</th>
-            <th>Car model</th>
+            <th>Model</th>
             <th>Plate</th>
             <th>Vin</th>
+            <th>Color</th>
         </tr>
     {% for car in car_list %}
         <tr>
-            <td><a href="{% url "user_cars" %}">{{ car.customer }}</a></td>
-            <td>{{ car.owner }}</td>
-            <td>{{ car.car_model }}</td>
+            <td><a href="{% url "user_cars" %}">{{ car.car_model }}</a></td>
             <td>{{ car.plate }}</td>
             <td>{{ car.vin }}</td>
+            <td>{{ car.color }}</td>
         </tr>
     {% endfor %}
     </table>

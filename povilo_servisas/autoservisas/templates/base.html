@@ -15,7 +15,6 @@
             <li><a href="{% url "index" %}">Home</a></li>
             <li><a href="{% url "brands" %}">Brands</a></li>
             <li><a href="{% url "cars" %}">Cars</a></li>
-            <li><a href="{% url "orders" %}">Orders</a></li>
             <li class="spacer"></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url "user_cars" %}">Owner Cars</a></li>
