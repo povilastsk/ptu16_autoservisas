@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest
 from django.db.models.query import QuerySet, Q
 from . import models
 from .forms import BrandSearchForm
-from django.views import generic
+from django.views.generic import ListView
 from typing import Any
 
-class UserCarListView(LoginRequiredMixin, generic.ListView):
+class UserCarListView(LoginRequiredMixin, ListView):
     model = models.Car
     template_name = "library/user_car_list.html"
     paginate_by = 5
@@ -17,6 +17,22 @@ class UserCarListView(LoginRequiredMixin, generic.ListView):
         queryset = super().get_queryset()
         queryset = queryset.filter(owner=self.request.user)
         return queryset
+    
+
+class CarServiceOrderListView(ListView):
+    model = models.ServiceOrder
+    template_name = 'library/serviceorder_list.html'
+    context_object_name = 'service_orders'
+
+    def get_queryset(self):
+        car = get_object_or_404(models.Car, pk=self.kwargs['car_id'])
+        return models.ServiceOrder.objects.filter(car=car)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        car = get_object_or_404(models.Car, pk=self.kwargs['car_id'])
+        context['car'] = car
+        return context
     
 
 def index(request:HttpRequest):

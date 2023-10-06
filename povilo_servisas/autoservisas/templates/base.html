@@ -17,7 +17,7 @@
             <li><a href="{% url "cars" %}">Cars</a></li>
             <li class="spacer"></li>
             {% if user.is_authenticated %}
-                <li><a href="{% url "user_cars" %}">Owner Cars</a></li>
+                <li><a href="{% url "user_cars" %}">Owned Cars</a></li>
                 {% if user.is_superuser or user.is_staff %}
                 <li><a href="{% url "admin:index" %}">Admin</a></li>
                 {% endif %}

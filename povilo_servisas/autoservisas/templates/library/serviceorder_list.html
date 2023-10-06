@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Service Orders for {{ car.car_model }}{% endblock title %}
+{% block content %}
+<h1>Orders for {{ car.car_model }}</h1>
+{% if service_orders %}
+    <table class="car-model-table">
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Part / Service</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    {% for order in service_orders %}
+        <tr>
+            <td>{{ order.date }}</td>
+            <td>{{ order.get_status_display }}</td>
+            <td>
+                <ul>
+                    {% for line in order.lines.all %}
+                        <li>{{ line.part_service.name }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for line in order.lines.all %}
+                        <li>{{ line.quantity }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for line in order.lines.all %}
+                        <li>{{ line.price }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No service orders found for this car.</p>
+{% endif %}
+{% endblock content %}
