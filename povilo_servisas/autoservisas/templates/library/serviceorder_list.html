@@ -16,25 +16,22 @@
             <td>{{ order.date }}</td>
             <td>{{ order.get_status_display }}</td>
             <td>
-                <ul>
-                    {% for line in order.lines.all %}
-                        <li>{{ line.part_service.name }}</li>
-                    {% endfor %}
-                </ul>
+                {% for line in order.lines.all %}
+                    {{ line.part_service.name }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
             </td>
             <td>
-                <ul>
-                    {% for line in order.lines.all %}
-                        <li>{{ line.quantity }}</li>
-                    {% endfor %}
-                </ul>
+                {% for line in order.lines.all %}
+                    {{ line.quantity }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
             </td>
             <td>
-                <ul>
-                    {% for line in order.lines.all %}
-                        <li>{{ line.price }}</li>
-                    {% endfor %}
-                </ul>
+                {% for line in order.lines.all %}
+                    {{ line.price }}
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
             </td>
         </tr>
     {% endfor %}

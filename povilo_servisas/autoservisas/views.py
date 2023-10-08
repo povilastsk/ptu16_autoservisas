@@ -47,13 +47,15 @@ def index(request:HttpRequest):
     }
     return render(request, "library/index.html", context)
 
-def parts_and_services(request:HttpRequest):
-    parts_and_services_list = models.PartService.objects.all().order_by("name")
-    return render(
-        request, 
-        'parts_and_services.html', 
-        {'partsandervices': parts_and_services_list}
-    )
+
+class PartServiceListView(ListView):
+    model = models.PartService
+    template_name = 'parts_and_services.html'
+    context_object_name = 'partsandervices'
+
+    def get_queryset(self):
+        return models.PartService.objects.all().order_by('name')
+    
 
 def brands(request:HttpRequest):
     search_query = request.GET.get("search_query")
@@ -85,12 +87,6 @@ def brand_detail(request:HttpRequest, brand):
         {"brand": brand, "car_models": car_models},
     )
 
-def cars(request:HttpRequest):
-    return render(
-        request,
-        "library/car_list.html",
-        {"car_list": models.Car.objects.all()}
-        )
 
 def orders(request:HttpRequest):
     return render(
