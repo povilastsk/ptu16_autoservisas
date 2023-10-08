@@ -7,5 +7,6 @@
     <h1>Part or Service Detail</h1>
     <p>Name: {{ partservice.name }}</p>
     <p>Price: ${{ partservice.price }}</p>
+    <div>Details: {{ partservice.details|safe }}</div>
 </div>
 {% endblock content %}

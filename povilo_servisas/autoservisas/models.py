@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _ 
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 
 User = get_user_model()
@@ -86,6 +87,7 @@ class ServiceOrder(models.Model):
 class PartService(models.Model):
     name = models.CharField(_("name"), max_length=50, db_index=True)
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
+    details = HTMLField(_("details"), blank=True, null=True)
 
     class Meta:
         verbose_name = _("part or service")
