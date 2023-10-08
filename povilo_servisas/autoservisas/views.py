@@ -5,7 +5,7 @@ from django.http import HttpRequest
 from django.db.models.query import QuerySet, Q
 from . import models
 from .forms import BrandSearchForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from typing import Any
 
 class UserCarListView(LoginRequiredMixin, ListView):
@@ -95,6 +95,14 @@ class PartServiceListView(ListView):
     def get_queryset(self):
         return models.PartService.objects.all().order_by('name')
 
-def partservice_detail(request, pk):
-    part_service = get_object_or_404(models.PartService, pk=pk)
-    return render(request, 'library/partservice_detail.html', {'partservice': part_service})
+class PartServiceDetailView(DetailView):
+    model = models.PartService
+    template_name = 'library/partservice_detail.html'
+    context_object_name = 'partservice'
+
+    def get_queryset(self):
+        return models.PartService.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
