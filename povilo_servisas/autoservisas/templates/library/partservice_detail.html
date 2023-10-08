@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Part or Service Detail{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Part or Service Detail</h1>
+    <p>Name: {{ partservice.name }}</p>
+    <p>Price: ${{ partservice.price }}</p>
+</div>
+{% endblock content %}

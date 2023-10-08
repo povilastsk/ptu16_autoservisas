@@ -48,15 +48,6 @@ def index(request:HttpRequest):
     return render(request, "library/index.html", context)
 
 
-class PartServiceListView(ListView):
-    model = models.PartService
-    template_name = 'parts_and_services.html'
-    context_object_name = 'partsandervices'
-
-    def get_queryset(self):
-        return models.PartService.objects.all().order_by('name')
-    
-
 def brands(request:HttpRequest):
     search_query = request.GET.get("search_query")
     if request.GET.get("reset_search"):
@@ -94,3 +85,16 @@ def orders(request:HttpRequest):
         "library/order_list.html",
         {"order_list": models.OrderLine.objects.all()}
         )
+
+
+class PartServiceListView(ListView):
+    model = models.PartService
+    template_name = 'library/partservice_list.html'
+    context_object_name = 'partsandervices'
+
+    def get_queryset(self):
+        return models.PartService.objects.all().order_by('name')
+
+def partservice_detail(request, pk):
+    part_service = get_object_or_404(models.PartService, pk=pk)
+    return render(request, 'library/partservice_detail.html', {'partservice': part_service})

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Parts and Services{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Parts and Services</h1>
+    <ul>
+        {% for partservice in partsandervices %}
+            <li>
+                <a href="{% url 'partservice_detail' pk=partservice.pk %}">
+                    {{ partservice.name }}
+                </a>
+            </li>
+        {% empty %}
+            <p>No parts or services available.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
