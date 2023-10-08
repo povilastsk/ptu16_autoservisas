@@ -24,10 +24,18 @@
                 <li><a href="{% url "logout" %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url "login" %}">Login</a></li>
+                <li><a href="{% url "signup" %}">Sign Up</a></li>
             {% endif %}
         </ul>
     </header>
     <main>
+        {% if messages %}
+            {% for message in messages %}
+            <div class="box box-{{ message.tags }}">
+                {{ message}}
+            </div>
+        {% endfor %}
+    {% endif %}
         {% block content%}
         {% endblock content%}
     </main>
