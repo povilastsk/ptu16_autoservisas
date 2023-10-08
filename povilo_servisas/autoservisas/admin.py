@@ -1,5 +1,7 @@
 from django.contrib import admin
 from . import models
+from . import models
+from .forms import PartServiceReviewForm
 
 
 class CarModelAdmin(admin.ModelAdmin):
@@ -32,8 +34,15 @@ class PartServiceAdmin(admin.ModelAdmin):
     list_display = ("name", "price")
 
 
+class PartServiceReviewAdmin(admin.ModelAdmin):
+    form = PartServiceReviewForm
+    list_display = ("partservice", "reviewer", "created_at")
+    list_display_links = ("created_at", )
+
+
 admin.site.register(models.CarModel, CarModelAdmin)
 admin.site.register(models.Car, CarAdmin)
 admin.site.register(models.ServiceOrder, ServiceOrderAdmin)
 admin.site.register(models.OrderLine, OrderLineAdmin)
 admin.site.register(models.PartService, PartServiceAdmin)
+admin.site.register(models.PartServiceReview, PartServiceReviewAdmin)

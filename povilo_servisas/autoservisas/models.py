@@ -129,3 +129,35 @@ class OrderLine(models.Model):
 
     def get_absolute_url(self):
         return reverse("orderline_detail", kwargs={"pk": self.pk})
+
+
+class PartServiceReview(models.Model):
+    partservice = models.ForeignKey(
+        PartService,
+        verbose_name=_("part or service"),
+        on_delete=models.CASCADE,
+        related_name='reviews',
+    )
+    reviewer = models.ForeignKey(
+        User,
+        verbose_name=_("reviewer"),
+        on_delete=models.CASCADE,
+        related_name='part_service_reviews',
+    )
+    content = models.TextField(_("Content"), max_length=4000)
+    created_at = models.DateTimeField(
+        _("created at"),
+        auto_now_add=True,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _("part or service review")
+        verbose_name_plural = _("part or service reviews")
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.partservice} review by {self.reviewer}"
+
+    def get_absolute_url(self):
+        return reverse("partservicereview_detail", kwargs={"pk": self.pk})
