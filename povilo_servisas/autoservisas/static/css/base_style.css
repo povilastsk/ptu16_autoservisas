@@ -207,3 +207,49 @@ div.box {
 .box-debug {
     background-color: #a8a8a8;
 }
+.part-service-list {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #522a0755;
+    box-shadow: 1px 3px 5px #00000033;
+}
+
+.part-service-list h1 {
+    border-bottom: 2px solid #b5651d55;
+    box-shadow: 0 3px 5px;
+    padding: 1rem;
+    background-color: #9A7B4F;
+    color: #FFFDD0;
+}
+
+.part-service-list ul {
+    list-style-type: none;
+    padding-inline-start: none;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid #b5651d55;
+}
+
+.part-service-list ul li {
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #b5651d55;
+    font-weight: bold;
+}
+
+.part-service-list p {
+    padding: 0 1rem;
+    font-weight: normal;
+}
+
+/* Style for the links within the list */
+.part-service-list a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.part-service-list a:hover {
+    font-weight: bold;
+    color: red;
+}
