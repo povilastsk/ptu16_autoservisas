@@ -10,31 +10,21 @@
             <th>Part / Service</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Action</th>
         </tr>
-    {% for order in service_orders %}
+        {% for order in service_orders %}
         <tr>
             <td>{{ order.date }}</td>
             <td>{{ order.get_status_display }}</td>
             <td>
-                {% for line in order.lines.all %}
-                    {{ line.part_service.name }}
-                    {% if not forloop.last %}, {% endif %}
-                {% endfor %}
-            </td>
-            <td>
-                {% for line in order.lines.all %}
-                    {{ line.quantity }}
-                    {% if not forloop.last %}, {% endif %}
-                {% endfor %}
-            </td>
-            <td>
-                {% for line in order.lines.all %}
-                    {{ line.price }}
-                    {% if not forloop.last %}, {% endif %}
-                {% endfor %}
+                {% if order.status == 0 %}
+                    <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
             </td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </table>
 {% else %}
     <p>No service orders found for this car.</p>

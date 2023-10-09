@@ -11,6 +11,54 @@ from . import models, forms
 from .forms import BrandSearchForm
 
 
+class PlaceOrderView(generic.edit.FormView):
+    template_name = 'library/order_form.html'
+    form_class = forms.OrderForm
+
+    def form_valid(self, form):
+        car_id = self.kwargs['car_id']
+        car = get_object_or_404(models.Car, pk=car_id)
+        part_service = form.cleaned_data['part_service']
+        quantity = form.cleaned_data['quantity']
+        cancel_order = form.cleaned_data.get('cancel_order')
+
+        if cancel_order:
+            service_order = models.ServiceOrder.objects.create(
+                car=car, status=3 
+            )
+            messages.success(self.request, 'Order canceled successfully.')
+        else:
+            service_order = models.ServiceOrder.objects.create(car=car)
+
+            models.OrderLine.objects.create(
+                order=service_order,
+                part_service=part_service,
+                quantity=quantity,
+                price=part_service.price * quantity,
+            )
+
+            messages.success(self.request, 'Order placed successfully.')
+
+        return redirect('user_car_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['car_id'] = self.kwargs['car_id']
+        return context
+
+
+class CancelOrderView(generic.View):
+    def get(self, request, order_id):
+        order = get_object_or_404(models.ServiceOrder, pk=order_id)
+        if order.status == 0:
+            order.status = 3
+            order.save()
+            messages.success(request, 'Order canceled successfully.')
+        else:
+            messages.error(request, 'Cannot cancel this order.')
+        return redirect('serviceorder_list')
+
+
 class UserCarListView(LoginRequiredMixin, generic.ListView):
     model = models.Car
     template_name = "library/user_car_list.html"
@@ -142,3 +190,28 @@ def review_create(request: HttpRequest):
         form = forms.PartServiceReviewForm()
 
     return render(request, 'partservice_review_create.html', {'form': form})
+
+
+def add_car(request):
+    if request.method == 'POST':
+        form = forms.CarCreationForm(request.POST)
+        if form.is_valid():
+            car_model, created = models.CarModel.objects.get_or_create(
+                make=form.cleaned_data['make'],
+                model=form.cleaned_data['model'],
+                year=form.cleaned_data['year']
+            )
+            new_car = models.Car(
+                car_model=car_model,
+                plate=form.cleaned_data['plate'],
+                vin=form.cleaned_data['vin'],
+                color=form.cleaned_data['color'],
+                owner=request.user
+            )
+            new_car.save()
+
+            return redirect('my_cars')
+    else:
+        form = forms.CarCreationForm()
+
+    return render(request, 'add_car.html', {'form': form})

@@ -11,22 +11,20 @@ class CarModelAdmin(admin.ModelAdmin):
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ("customer", "owner", "car_model", "plate", "vin", "color")
-    list_filter = ("customer", "car_model__make", "color")
-    search_fields = ("customer", "owner", "car_model__make", "car_model__model", "plate", "vin", "owner__last_name", "owner__username")
-
+    list_display = ("owner", "car_model", "plate", "vin", "color")
+    list_filter = ("car_model__make", "color")
+    search_fields = ("owner__username", "car_model__make", "car_model__model", "plate", "vin", "owner__last_name")
 
 class ServiceOrderAdmin(admin.ModelAdmin):
     list_display = ("date", "car", "status")
     list_filter = ("status", )
-    search_fields = ("car__customer", "car__date", "status")
+    search_fields = ("car__owner__username", "date", "status")
     date_hierarchy = "date"
-
 
 class OrderLineAdmin(admin.ModelAdmin):
     list_display = ("order", "part_service", "quantity", "price")
-    list_filter = ("order__car__customer", "part_service__name")
-    search_fields = ("order__car__customer", "part_service__name")
+    list_filter = ("order__car__owner__username", "part_service__name")
+    search_fields = ("order__car__owner__username", "part_service__name")
     raw_id_fields = ("order", "part_service")
 
 

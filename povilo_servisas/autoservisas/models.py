@@ -27,13 +27,12 @@ class CarModel(models.Model):
     
 
 class Car(models.Model):
-    customer = models.CharField(_("customer"), max_length=100, db_index=True)
     car_model = models.ForeignKey(
         CarModel,
         verbose_name=_("car model"),
         on_delete=models.CASCADE,
         related_name="cars",
-        )
+    )
     plate = models.CharField(_("plate"), max_length=50, null=True, blank=True, db_index=True)
     vin = models.CharField(_("vin"), max_length=17, null=True, blank=True, db_index=True)
     color = models.CharField(_("color"), max_length=50, null=True, blank=True)
@@ -43,7 +42,7 @@ class Car(models.Model):
         verbose_name_plural = _("cars")
 
     def __str__(self):
-        return f"{self.customer}: {self.car_model} - {self.plate}"
+        return f"{self.owner}: {self.car_model} - {self.plate}"
 
     def get_absolute_url(self):
         return reverse("car_detail", kwargs={"pk": self.pk})
@@ -56,7 +55,7 @@ class Car(models.Model):
     )
 
 SERVICEORDER_STATUS = (
-    (0, _("pending")),
+    (0, _("confirmed")),
     (1, _("processing")),
     (2, _("completed")),
     (3, _("cancelled")),

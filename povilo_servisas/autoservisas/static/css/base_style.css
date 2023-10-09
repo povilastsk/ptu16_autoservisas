@@ -213,7 +213,6 @@ div.box {
     background-color: #522a0755;
     box-shadow: 1px 3px 5px #00000033;
 }
-
 .part-service-list h1 {
     border-bottom: 2px solid #b5651d55;
     box-shadow: 0 3px 5px;
@@ -221,7 +220,6 @@ div.box {
     background-color: #9A7B4F;
     color: #FFFDD0;
 }
-
 .part-service-list ul {
     list-style-type: none;
     padding-inline-start: none;
@@ -229,27 +227,50 @@ div.box {
     margin: 1rem;
     border: 1px solid #b5651d55;
 }
-
 .part-service-list ul li {
     margin: 0.25rem 0;
     padding: 0.25rem 0.5rem;
     border-bottom: 1px solid #b5651d55;
     font-weight: bold;
 }
-
 .part-service-list p {
     padding: 0 1rem;
     font-weight: normal;
 }
-
-/* Style for the links within the list */
 .part-service-list a {
     color: black;
     text-decoration: none;
     font-weight: bold;
 }
-
 .part-service-list a:hover {
     font-weight: bold;
     color: red;
+}
+.add-car-button {
+    background-color: #241a16;
+    color: #FFFDD0;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.add-car-button:hover {
+    background-color: red;
+}
+.cancel-button {
+    background-color: #241a16;
+    color: #FFFDD0;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.cancel-button:hover {
+    background-color: #9A7B4F;
 }
