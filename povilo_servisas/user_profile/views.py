@@ -3,8 +3,14 @@ from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.http import HttpRequest
+from . import models
 
 User = get_user_model()
+
+
+def profile(request: HttpRequest):
+    return render(request, "user_profile/profile.html")
+
 
 @csrf_protect
 def signup(request: HttpRequest):

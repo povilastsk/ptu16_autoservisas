@@ -274,3 +274,9 @@ div.box {
 .cancel-button:hover {
     background-color: #9A7B4F;
 }
+.profile-photo {
+    max-width: calc(100% - 4rem);
+    width: 500px;
+    margin: 1rem;
+    border: 2px solid #a09933;
+}
