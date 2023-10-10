@@ -214,4 +214,4 @@ def add_car(request):
     else:
         form = forms.CarCreationForm()
 
-    return render(request, 'add_car.html', {'form': form})
+    return render(request, 'library/add_car.html', {'form': form})
