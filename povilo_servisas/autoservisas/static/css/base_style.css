@@ -275,8 +275,8 @@ div.box {
     background-color: #9A7B4F;
 }
 .profile-photo {
+    margin: 1rem;
     max-width: calc(100% - 4rem);
     width: 500px;
-    margin: 1rem;
     border: 2px solid #a09933;
 }
