@@ -12,7 +12,7 @@ from .forms import BrandSearchForm
 
 
 class PlaceOrderView(generic.edit.FormView):
-    template_name = 'library/order_form.html'
+    template_name = 'autoservisas/order_form.html'
     form_class = forms.OrderForm
 
     def form_valid(self, form):
@@ -61,7 +61,7 @@ class CancelOrderView(generic.View):
 
 class UserCarListView(LoginRequiredMixin, generic.ListView):
     model = models.Car
-    template_name = "library/user_car_list.html"
+    template_name = "autoservisas/user_car_list.html"
     paginate_by = 5
 
     def get_queryset(self) -> QuerySet[Any]:
@@ -72,7 +72,7 @@ class UserCarListView(LoginRequiredMixin, generic.ListView):
 
 class CarServiceOrderListView(generic.ListView):
     model = models.ServiceOrder
-    template_name = 'library/serviceorder_list.html'
+    template_name = 'autoservisas/serviceorder_list.html'
     context_object_name = 'service_orders'
 
     def get_queryset(self):
@@ -96,7 +96,7 @@ def index(request:HttpRequest):
         "parts_services": models.PartService.objects.all(),
         "num_visits": num_visits,
     }
-    return render(request, "library/index.html", context)
+    return render(request, "autoservisas/index.html", context)
 
 
 def brands(request:HttpRequest):
@@ -117,7 +117,7 @@ def brands(request:HttpRequest):
 
     return render(
         request,
-        "library/brand_list.html",
+        "autoservisas/brand_list.html",
         {"brand_list": page_obj, "search_form": search_form},
     )
 
@@ -125,7 +125,7 @@ def brand_detail(request:HttpRequest, brand):
     car_models = models.CarModel.objects.filter(make=brand)
     return render(
         request,
-        "library/brand_detail.html",
+        "autoservisas/brand_detail.html",
         {"brand": brand, "car_models": car_models},
     )
 
@@ -133,14 +133,14 @@ def brand_detail(request:HttpRequest, brand):
 def orders(request:HttpRequest):
     return render(
         request,
-        "library/order_list.html",
+        "autoservisas/order_list.html",
         {"order_list": models.OrderLine.objects.all()}
         )
 
 
 class PartServiceListView(generic.ListView):
     model = models.PartService
-    template_name = 'library/partservice_list.html'
+    template_name = 'autoservisas/partservice_list.html'
     context_object_name = 'partsandervices'
 
     def get_queryset(self):
@@ -149,7 +149,7 @@ class PartServiceListView(generic.ListView):
 
 class PartServiceDetailView(generic.edit.FormMixin, generic.DetailView):
     model = models.PartService
-    template_name = 'library/partservice_detail.html'
+    template_name = 'autoservisas/partservice_detail.html'
     context_object_name = 'partservice'
     form_class = forms.PartServiceReviewForm
 
@@ -214,4 +214,4 @@ def add_car(request):
     else:
         form = forms.CarCreationForm()
 
-    return render(request, 'library/add_car.html', {'form': form})
+    return render(request, 'autoservisas/add_car.html', {'form': form})

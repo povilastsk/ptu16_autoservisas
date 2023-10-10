@@ -11,7 +11,7 @@
 
 {% if brand_list %}
     {% with brand_list as page_obj%}
-        {% include "library/inc/pager_prev_next.html" %}
+        {% include "autoservisas/inc/pager_prev_next.html" %}
     {% endwith %}
     <ul class="brand-list">
         {% for brand in brand_list %}
@@ -19,7 +19,7 @@
         {% endfor %}
     </ul>
     {% with brand_list as page_obj %}
-        {% include "library/inc/pager_pages.html" %}
+        {% include "autoservisas/inc/pager_pages.html" %}
     {% endwith %}
 {% endif %}
 {% endblock content %}
