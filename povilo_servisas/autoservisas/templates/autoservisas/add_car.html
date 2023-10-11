@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Add a Car{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "add a car"|title %}{% endblock title %}
 {% block content %}
-<h1>Add a Car</h1>
+<h1>{% trans "add a car"|capfirst %}</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Add Car</button>
-    <a href="{% url 'user_car_list' %}" class="btn btn-secondary cancel-button">Cancel</a>
+    <button type="submit">{% trans "add car"|capfirst %}</button>
+    <a href="{% url 'user_car_list' %}" class="btn btn-secondary cancel-button">{% trans "cancel"|capfirst %}</a>
 </form>
 {% endblock content %}

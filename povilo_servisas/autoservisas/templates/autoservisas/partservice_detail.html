@@ -1,23 +1,23 @@
 {% extends "base.html" %}
-
-{% block title %}Part or Service Detail{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "part or service detail"|title %}{% endblock title %}
 
 {% block content %}
 <div class="container">
-    <h1>Part or Service Detail</h1>
-    <p>Name: {{ partservice.name }}</p>
-    <p>Price: ${{ partservice.price }}</p>
-    <div>Details: {{ partservice.details|safe }}</div>
+    <h1>{% trans "part or service detail"|capfirst %}</h1>
+    <p>{% trans "name"|capfirst %}: {{ partservice.name }}</p>
+    <p>{% trans "price"|capfirst %}: ${{ partservice.price }}</p>
+    <div>{% trans "details"|capfirst %}: {{ partservice.details|safe }}</div>
 
-    <h2>Reviews</h2>
+    <h2>{% trans "reviews"|capfirst %}</h2>
     {% if user.is_authenticated %}
     <form method="post" action="{% url 'review_create' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <p><button type="submit">Post Review</button></p>
+        <p><button type="submit">{% trans "post review"|capfirst %}</button></p>
     </form>
     {% else %}
-    <p>Login to post a review.</p>
+    <p>{% trans "login to post a review"|capfirst %}.</p>
     {% endif %}
     
     {% if partservice.reviews.all %}
@@ -33,7 +33,7 @@
         {% endfor %}
     </ul>
     {% else %}
-    <p>No reviews yet.</p>
+    <p>{% trans "no reviews yet"|capfirst %}.</p>
     {% endif %}
 </div>
 {% endblock content %}

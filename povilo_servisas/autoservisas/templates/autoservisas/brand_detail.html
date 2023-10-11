@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Car Models for {{ brand }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "car models for"|capfirst %} {{ brand }}{% endblock title %}
 {% block content %}
-<h1>Car Models for {{ brand }}</h1>
+<h1>{% trans "car models for"|capfirst %} {{ brand }}</h1>
 {% if car_models %}
     <table class="car-model-table">
         <thead>
             <tr>
-                <th>Model</th>
-                <th>Year</th>
+                <th>{% trans "model"|capfirst %}</th>
+                <th>{% trans "year"|capfirst %}</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,6 @@
         </tbody>
     </table>
 {% else %}
-    <p>No car models found for {{ brand }}.</p>
+    <p>{% trans "no car models found for"|capfirst %} {{ brand }}.</p>
 {% endif %}
 {% endblock content %}

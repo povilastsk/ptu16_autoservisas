@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-{% block title %}My Cars from {{ block.super }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "my cars from"|title %} {{ block.super }}{% endblock title %}
 {% block content %}
-<h1>My Cars</h1>
-<a href="{% url 'add_car' %}" class="btn btn-primary add-car-button">Add Car</a>
+<h1>{% trans "my cars"|capfirst %}</h1>
+<a href="{% url 'add_car' %}" class="btn btn-primary add-car-button">{% trans "add car"|capfirst %}</a>
 {% if car_list %}
     <table class="car-model-table">
         <tr>
-            <th>Model</th>
-            <th>Plate</th>
-            <th>Vin</th>
-            <th>Color</th>
-            <th>Action</th>
+            <th>{% trans "model"|capfirst %}</th>
+            <th>{% trans "plate"|capfirst %}</th>
+            <th>{% trans "vin"|capfirst %}</th>
+            <th>{% trans "color"|capfirst %}</th>
+            <th>{% trans "action"|capfirst %}</th>
         </tr>
     {% for car in car_list %}
         <tr>
@@ -18,11 +19,11 @@
             <td>{{ car.plate }}</td>
             <td>{{ car.vin }}</td>
             <td>{{ car.color }}</td>
-            <td><a href="{% url 'place_order' car.id %}">Place Order</a></td>
+            <td><a href="{% url 'place_order' car.id %}">{% trans "place order"|capfirst %}</a></td>
         </tr>
     {% endfor %}
     </table>
 {% else %}
-    <p>No cars found.</p>
+    <p>{% trans "no cars found"|capfirst %}.</p>
 {% endif %}
 {% endblock content %}

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Welcome to {{block.super}}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "Welcome to"|capfirst %} {{block.super}}{% endblock title %}
 {% block content %}
-    <h1>Welcome to Povilo Servisas PTU16</h1>
-    <p>Current Database Status:</p>
+    <h1>"{% trans "welcome to"|capfirst %} Povilo Servisas PTU16"</h1>
+    <p>{% trans "Current Database Status"|capfirst %}:</p>
     <ul>
-        <li>Cars: {{ num_cars }}</li>
-        <li>Brands: {{ num_makes }}</li>
-        <li>Orders currently: {{ num_orders }}</li>
-        <li>Your visits: {{ num_visits }}</li>
+        <li>{% trans "cars"|capfirst %}: {{ num_cars }}</li>
+        <li>{% trans "brands"|capfirst %}: {{ num_makes }}</li>
+        <li>{% trans "orders currently"|capfirst %}: {{ num_orders }}</li>
+        <li>{% trans "your visits"|capfirst %}: {{ num_visits }}</li>
     </ul>
 {% endblock content%}

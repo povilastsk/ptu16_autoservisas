@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Brands in {{ block.super }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "brands in"|title %} {{ block.super }}{% endblock title %}
 {% block content %}
-<h1>Car Brands</h1>
+<h1>{% trans "car brands"|capfirst %}</h1>
 
 <form method="get" action="">
     {{ search_form.as_p }}
-    <button type="submit" class="search-button">Search</button>
-    <a href="?reset_search" class="reset-button">Reset</a>
+    <button type="submit" class="search-button">{% trans "search"|capfirst %}</button>
+    <a href="?reset_search" class="reset-button">{% trans "reset"|capfirst %}</a>
 </form>
 
 {% if brand_list %}

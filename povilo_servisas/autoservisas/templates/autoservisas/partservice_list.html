@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
-{% block title %}Parts and Services{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "parts and services"|title %}{% endblock title %}
 
 {% block content %}
 <div class="part-service-list">
-    <h1>Parts and Services</h1>
+    <h1>{% trans "parts and services"|capfirst %}</h1>
     <ul>
         {% for partservice in partsandervices %}
             <li>
@@ -13,7 +13,7 @@
                 </a>
             </li>
         {% empty %}
-            <p>No parts or services available.</p>
+            <p>{% trans "no parts or services available"|capfirst %}.</p>
         {% endfor %}
     </ul>
 </div>

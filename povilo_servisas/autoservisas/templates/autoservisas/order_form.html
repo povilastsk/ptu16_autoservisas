@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Place Order{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "place order"|title %}{% endblock title %}
 {% block content %}
 <div class="container">
-    <h1>Place Order</h1>
+    <h1>{% trans "place order"|capfirst %}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
-            <button type="submit">Place Order</button>
-            <button type="button" onclick="window.location.href = '{% url 'user_car_list' %}';" class="btn btn-danger">Cancel Order</button>
+            <button type="submit">{% trans "place order"|capfirst %}</button>
+            <button type="button" onclick="window.location.href = '{% url 'user_car_list' %}';" class="btn btn-danger">{% trans "cancel order"|capfirst %}</button>
         </div>
     </form>
 </div>

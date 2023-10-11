@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Service Orders for {{ car.car_model }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "service orders for"|title %} {{ car.car_model }}{% endblock title %}
 {% block content %}
-<h1>Orders for {{ car.car_model }}</h1>
+<h1>{% trans "orders for"|capfirst %} {{ car.car_model }}</h1>
 {% if service_orders %}
     <table class="car-model-table">
         <tr>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Part / Service</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Action</th>
+            <th>{% trans "date"|capfirst %}</th>
+            <th>{% trans "status"|capfirst %}</th>
+            <th>{% trans "part"|capfirst %} / {% trans "service"|capfirst %}</th>
+            <th>{% trans "quantity"|capfirst %}</th>
+            <th>{% trans "price"|capfirst %}</th>
+            <th>{% trans "action"|capfirst %}</th>
         </tr>
         {% for order in service_orders %}
         <tr>
@@ -23,15 +24,15 @@
             <td>{{ order.price }}</td>
             <td>
                 {% if order.status == 0 %}
-                    <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a>
+                    <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">{% trans "cancel order"|capfirst %}</a>
                 {% elif order.status != 0 and order.status != 3 %}
-                    This order cannot be cancelled
+                    {% trans "this order cannot be cancelled"|capfirst %}
                 {% endif %}
             </td>
         </tr>
         {% endfor %}
     </table>
 {% else %}
-    <p>No service orders found for this car.</p>
+    <p>{% trans "No service orders found for this car"|capfirst %}.</p>
 {% endif %}
 {% endblock content %}
