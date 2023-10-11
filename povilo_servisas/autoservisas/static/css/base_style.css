@@ -280,3 +280,6 @@ div.box {
     width: 500px;
     border: 2px solid #a09933;
 }
+form.inline-form {
+    display: inline-block;
+}
