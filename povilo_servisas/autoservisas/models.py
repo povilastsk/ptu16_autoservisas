@@ -20,7 +20,7 @@ class CarModel(models.Model):
         ordering = ["make", "model", "year"]
 
     def __str__(self):
-        return f"{self.make} - {self.model} - {self.year}"
+        return f"{self.make} {self.model} {self.year}"
 
     def get_absolute_url(self):
         return reverse("carmodel_detail", kwargs={"pk": self.pk})

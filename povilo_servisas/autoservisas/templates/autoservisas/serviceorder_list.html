@@ -17,10 +17,15 @@
             <td>{{ order.date }}</td>
             <td>{{ order.get_status_display }}</td>
             <td>
+                {{ order.part_service }}
+            </td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>
                 {% if order.status == 0 %}
                     <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a>
-                {% else %}
-                    &nbsp;
+                {% elif order.status != 0 and order.status != 3 %}
+                    This order cannot be cancelled
                 {% endif %}
             </td>
         </tr>

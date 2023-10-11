@@ -56,7 +56,7 @@ class CancelOrderView(generic.View):
             messages.success(request, 'Order canceled successfully.')
         else:
             messages.error(request, 'Cannot cancel this order.')
-        return redirect('serviceorder_list')
+        return redirect('car_service_orders', car_id=order.car.id)
 
 
 class UserCarListView(LoginRequiredMixin, generic.ListView):

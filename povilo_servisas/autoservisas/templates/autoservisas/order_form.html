@@ -6,8 +6,10 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Place Order</button>
-        <a href="{% url 'user_car_list' %}" class="btn btn-danger">Cancel Order</a>
+        <div>
+            <button type="submit">Place Order</button>
+            <button type="button" onclick="window.location.href = '{% url 'user_car_list' %}';" class="btn btn-danger">Cancel Order</button>
+        </div>
     </form>
 </div>
 {% endblock content %}

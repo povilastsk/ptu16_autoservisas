@@ -22,8 +22,7 @@ class OrderForm(forms.Form):
         queryset=models.PartService.objects.all(),
         label="Select Part or Service",
     )
-    quantity = forms.IntegerField(min_value=1, label="Quantity")
-    cancel_order = forms.BooleanField(required=False, initial=False, label="Cancel Order")
+    quantity = forms.IntegerField(min_value=1, label="Quantity", initial=1)
 
 
 class CarCreationForm(forms.ModelForm):
