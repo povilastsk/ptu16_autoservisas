@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-11 22:28+0300\n"
+"POT-Creation-Date: 2023-10-12 08:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,7 +223,7 @@ msgid "Current Database Status"
 msgstr "Duomenų bazės būsena"
 
 #: .\autoservisas\templates\autoservisas\index.html:9
-#: .\autoservisas\templates\base.html:16
+#: .\autoservisas\templates\base.html:18
 msgid "brands"
 msgstr "gamintojai"
 
@@ -306,7 +306,7 @@ msgid "my cars from"
 msgstr "mano automobiliai"
 
 #: .\autoservisas\templates\autoservisas\user_car_list.html:5
-#: .\autoservisas\templates\base.html:20
+#: .\autoservisas\templates\base.html:22
 msgid "my cars"
 msgstr "mano automobiliai"
 
@@ -314,30 +314,30 @@ msgstr "mano automobiliai"
 msgid "no cars found"
 msgstr "automobilių nerasta"
 
-#: .\autoservisas\templates\base.html:14
+#: .\autoservisas\templates\base.html:16
 msgid "Povilo Servisas"
 msgstr ""
 
-#: .\autoservisas\templates\base.html:15
+#: .\autoservisas\templates\base.html:17
 msgid "home"
 msgstr "pradžia"
 
-#: .\autoservisas\templates\base.html:17
+#: .\autoservisas\templates\base.html:19
 msgid "services"
 msgstr "paslaugos"
 
-#: .\autoservisas\templates\base.html:22
+#: .\autoservisas\templates\base.html:24
 msgid "admin"
 msgstr "administratorius"
 
-#: .\autoservisas\templates\base.html:25
+#: .\autoservisas\templates\base.html:27
 msgid "logout"
 msgstr "atsijungti"
 
-#: .\autoservisas\templates\base.html:27
+#: .\autoservisas\templates\base.html:29
 msgid "login"
 msgstr "prisijungti"
 
-#: .\autoservisas\templates\base.html:28
+#: .\autoservisas\templates\base.html:30
 msgid "sign up"
 msgstr "užsiregistruoti"
