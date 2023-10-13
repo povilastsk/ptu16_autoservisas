@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  dev:
+    build: .
+    image: ptu16_autoservisas:dev
+    container_name: ptu16_autoservisas.dev
+    tty: true
+    stdin_open: true
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./povilo_servisas:/app
+    command: > 
+      bash -c "python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn povilo_servisas.wsgi --bind 0.0.0.0:8000"
+  nginx:
+    build: ./nginx/
+    image: nginx:ptu16_autoservisas
+    container_name: ptu16_autoservisas.nginx
+    restart: always
+    ports:
+      - 80:80
+    links:
+      - dev:autoservisas 
+    volumes:
+      - ./povilo_servisas/static:/app/static
+      - ./povilo_servisas/media:/app/media
+    
